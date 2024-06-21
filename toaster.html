@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="scripts/utills.css">
+        <link rel="stylesheet" href="scripts/toaster.css">
+</head>
+<style>
+    .close-toaster-container {
+    display: none;
+    overflow: hidden;
+    position: absolute;
+    top: 80vh;
+    left: 69vw;
+    height: 15vh;
+    width: 30vw;
+    border-radius: 5px;
+    background-color: purple;
+}
+
+.toaster-container {
+    display: none;
+    overflow: hidden;
+    position: absolute;
+    top: 80vh;
+    left: 69vw;
+    height: 15vh;
+    width: 30vw;
+    border-radius: 5px;
+    background-color: purple;
+    /* background-color: rgba(93, 15, 93, 0.805); */
+}
+
+.open-toaster-container {
+    overflow: hidden;
+    position: absolute;
+    top: 80vh;
+    left: 69vw;
+    height: 15vh;
+    width: 30vw;
+    border-radius: 5px;
+    background-color: purple;
+    /* transform: translate(105%, 0%); */
+    animation: toasterAnimation 2s ease-in-out  ;
+    transition: opacity 1s ease;
+}
+
+@keyframes toasterAnimation {
+   from{opacity: 0;}
+   to{opacity: 1;}
+}
+.progressor {
+    /* margin-top: 0.5vw; */
+    width: 0px;
+    height: 1.5vh;
+    background-color: rgb(221, 203, 221);
+    border-radius: 0px 10px 0px 0px;
+    animation: loadProgress 4s ease-in-out 0s 1 forwards;
+}
+
+@keyframes loadProgress {
+    0% {
+        width: 0%;
+    }
+
+    50% {
+        width: 25%;
+    }
+
+    99% {
+        width: 100%;
+        border-radius: 0px 0px 0px 0px;
+    }
+
+    100% {
+        display: none;
+    }
+}
+
+.toaster-container-opener-button{
+    cursor: pointer;
+    align-items: center;
+    padding: 1vw;
+    font-weight: 700;
+    border: none;
+    outline: none;
+}
+
+.toaster-container-closer-button {
+    cursor: pointer;
+    position: relative;
+    left: 25vw;
+    color: purple;
+    padding: 5px 10px 5px 10px;
+    border: none;
+    outline: none;
+    background-color: rgb(235, 160, 235);
+}
+
+.toaster-container-closer-button:hover {
+    background-color: purple;
+    color: rgb(235, 160, 235);
+    border: 1px solid white;
+}
+</style>
+<body>
+    <button type="button"  class="toaster-container-opener-button" onclick="openToaster()">Explore</button>
+
+    <div class="toaster-container" id="toaster-container">
+        <div class="progressor"></div>
+        <div class="toaster-footer flex-box-row" style="justify-content: space-evenly; margin-top: 15px; color: white;">
+            <img src="assets/user.png" width="52vw"> Your Purchase Have Been Done !
+        </div>
+        <button class="toaster-container-closer-button" style="margin-top: 1px; " type="button"
+            onclick="closeToaster()">OK !</button>
+    </div>
+
+    <script>
+        let toasterContainer = document.getElementById("toaster-container");
+        function openToaster() {
+            toasterContainer.classList.remove("toaster-container");
+            toasterContainer.classList.add("open-toaster-container");
+        }
+        function closeToaster() {
+            toasterContainer.classList.add("close-toaster-container");
+            toasterContainer.classList.remove("open-toaster-container");
+        }
+    </script>
+</body>
+
+</html>
